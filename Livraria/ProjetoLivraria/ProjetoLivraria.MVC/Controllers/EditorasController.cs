@@ -82,12 +82,13 @@ namespace ProjetoLivraria.MVC.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, EditoraViewModel editoraViewModel)
         {
             var editoraEntidade = _editoraApp.ObterPorId(id);
-            _editoraApp.Remover(editoraEntidade);
+            if (_editoraApp.Remover(editoraEntidade))
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Erro", new { msg = "Editora não pode ser excluída pois existe livro vinculado." });
         }
     }
 }

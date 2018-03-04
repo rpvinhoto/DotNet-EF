@@ -12,5 +12,10 @@ namespace ProjetoLivraria.Aplicacao.Classes
         {
             _editoraServico = editoraServico;
         }
+
+        public new bool Remover(Editora editora)
+        {
+            return _editoraServico.Remover(editora);
+        }
     }
 }

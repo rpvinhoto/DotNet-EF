@@ -12,5 +12,10 @@ namespace ProjetoLivraria.Dominio.Servicos
         {
             _editoraRepositorio = editoraRepositorio;
         }
+
+        public new bool Remover(Editora editora)
+        {
+            return _editoraRepositorio.Remover(editora);
+        }
     }
 }

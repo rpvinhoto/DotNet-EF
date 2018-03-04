@@ -12,5 +12,10 @@ namespace ProjetoLivraria.Dominio.Servicos
         {
             _categoriaRepositorio = categoriaRepositorio;
         }
+
+        public new bool Remover(Categoria categoria)
+        {
+            return _categoriaRepositorio.Remover(categoria);
+        }
     }
 }

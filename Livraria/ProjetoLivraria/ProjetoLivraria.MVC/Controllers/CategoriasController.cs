@@ -85,9 +85,10 @@ namespace ProjetoLivraria.MVC.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
             var categoriaEntidade = _categoriaApp.ObterPorId(id);
-            _categoriaApp.Remover(categoriaEntidade);
+            if (_categoriaApp.Remover(categoriaEntidade))
+                return RedirectToAction("Index");
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Erro", new { msg = "Categoria não pode ser excluída pois existe livro vinculado." });
         }
     }
 }

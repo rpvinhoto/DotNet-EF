@@ -12,5 +12,10 @@ namespace ProjetoLivraria.Aplicacao.Classes
         {
             _categoriaServico = categoriaServico;
         }
+
+        public new bool Remover(Categoria categoria)
+        {
+            return _categoriaServico.Remover(categoria);
+        }
     }
 }
