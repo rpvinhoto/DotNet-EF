@@ -18,5 +18,10 @@ namespace ProjetoLivraria.Dominio.Servicos
         {
             return _livroRepositorio.ObterPorTitulo(titulo);
         }
+
+        public IEnumerable<Livro> ObterTodosOrdenadosPorTitulo()
+        {
+            return _livroRepositorio.ObterTodosOrdenadosPorTitulo();
+        }
     }
 }

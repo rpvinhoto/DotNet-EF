@@ -8,9 +8,9 @@ namespace ProjetoLivraria.MVC.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<LivroViewModel, Livro>();
-            CreateMap<EditoraViewModel, Editora>();
-            CreateMap<CategoriaViewModel, Categoria>();
+            CreateMap<Livro, LivroViewModel>();
+            CreateMap<Editora, EditoraViewModel>();
+            CreateMap<Categoria, CategoriaViewModel>();
         }
     }
 }

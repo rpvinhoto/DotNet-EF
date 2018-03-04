@@ -18,5 +18,10 @@ namespace ProjetoLivraria.Aplicacao.Classes
         {
             return _livroServico.ObterPorTitulo(titulo);
         }
+
+        public IEnumerable<Livro> ObterTodosOrdenadosPorTitulo()
+        {
+            return _livroServico.ObterTodosOrdenadosPorTitulo();
+        }
     }
 }

@@ -6,10 +6,10 @@ namespace ProjetoLivraria.MVC.AutoMapper
     {
         public static void RegisterMappings()
         {
-            Mapper.Initialize(x =>
+            Mapper.Initialize(cfg =>
             {
-                x.AddProfile<DomainToViewModelMappingProfile>();
-                x.AddProfile<ViewModelToDomainMappingProfile>();
+                cfg.AddProfile<DomainToViewModelMappingProfile>();
+                cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
         }
     }

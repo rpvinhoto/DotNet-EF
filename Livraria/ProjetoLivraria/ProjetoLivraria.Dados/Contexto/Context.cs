@@ -1,5 +1,6 @@
 ﻿using ProjetoLivraria.Dados.EntidadesConfig;
 using ProjetoLivraria.Dominio.Entidades;
+using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -11,7 +12,7 @@ namespace ProjetoLivraria.Dados.Contexto
             : base("ProjetoLivraria")
 
         {
-
+            var bugFix = typeof(System.Data.Entity.SqlServer.SqlProviderServices).ToString();
         }
 
         public DbSet<Categoria> Categorias { get; set; }
@@ -28,6 +29,7 @@ namespace ProjetoLivraria.Dados.Contexto
 
             modelBuilder.Properties().Where(p => p.Name == string.Format("{0}Id", p.ReflectedType.Name)).Configure(p => p.IsKey());
 
+            modelBuilder.Properties<DateTime>().Configure(p => p.HasColumnType("datetime2"));
             modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
             modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(100));
 

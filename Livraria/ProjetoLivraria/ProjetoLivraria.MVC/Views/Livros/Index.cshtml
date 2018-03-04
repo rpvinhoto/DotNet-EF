@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProjetoLivraria.MVC.ViewModels.LivroViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Livros";
 }
 
-<h2>Index</h2>
+<h2>Livros</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,15 +35,15 @@
             @Html.DisplayFor(modelItem => item.DataPublicacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EditoraId)
+            @Html.DisplayFor(modelItem => item.Editora.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoriaId)
+            @Html.DisplayFor(modelItem => item.Categoria.Nome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LivroId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LivroId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LivroId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.LivroId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.LivroId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.LivroId })
         </td>
     </tr>
 }

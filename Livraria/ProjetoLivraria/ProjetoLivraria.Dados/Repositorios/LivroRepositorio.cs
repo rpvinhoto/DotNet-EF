@@ -11,5 +11,10 @@ namespace ProjetoLivraria.Dados.Repositorios
         {
             return Db.Livros.Where(l => l.Titulo.Contains(titulo));
         }
+
+        public IEnumerable<Livro> ObterTodosOrdenadosPorTitulo()
+        {
+            return Db.Livros.OrderBy(l => l.Titulo).ToList();
+        }
     }
 }
