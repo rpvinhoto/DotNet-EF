@@ -1,0 +1,50 @@
+﻿@model ProjetoLivraria.MVC.ViewModels.LivroViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPublicacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPublicacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditoraId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editora.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.LivroId }) |
+    @Html.ActionLink("Voltar à lista", "Index")
+</p>
