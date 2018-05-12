@@ -1,0 +1,947 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HarlemErpDataModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="datanascimento" Type="date" />
+          <Property Name="sexo" Type="varchar" MaxLength="1" />
+          <Property Name="rg" Type="varchar" MaxLength="20" />
+          <Property Name="cpf" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="telefone" Type="varchar" MaxLength="20" />
+          <Property Name="celular" Type="varchar" MaxLength="20" />
+          <Property Name="logradouro" Type="varchar" MaxLength="100" />
+          <Property Name="complemento" Type="varchar" MaxLength="100" />
+          <Property Name="numero" Type="int" />
+          <Property Name="bairro" Type="varchar" MaxLength="100" />
+          <Property Name="cep" Type="varchar" MaxLength="20" />
+          <Property Name="municipio" Type="int" />
+          <Property Name="datacadastro" Type="datetime" Precision="0" />
+          <Property Name="usuariocadastro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="licenca" Type="varchar" MaxLength="45" />
+          <Property Name="primeiroacessorealizado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sigla" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="estoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto" Type="int" Nullable="false" />
+          <Property Name="qtd" Type="double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="marcas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="datacadastro" Type="datetime" Precision="0" />
+          <Property Name="usuariocadastro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="municipios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="precos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto" Type="int" Nullable="false" />
+          <Property Name="datainicial" Type="date" Nullable="false" />
+          <Property Name="datafinal" Type="date" />
+          <Property Name="valorcusto" Type="double" Nullable="false" />
+          <Property Name="valorvenda" Type="double" Nullable="false" />
+          <Property Name="datacadastro" Type="datetime" Precision="0" />
+          <Property Name="usuariocadastro" Type="int" />
+        </EntityType>
+        <EntityType Name="produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
+          <Property Name="categoria" Type="int" Nullable="false" />
+          <Property Name="datacadastro" Type="datetime" Precision="0" />
+          <Property Name="usuariocadastro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produtoscategoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="telefone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="vendas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cliente" Type="int" Nullable="false" />
+          <Property Name="valor" Type="double" Nullable="false" />
+          <Property Name="desconto" Type="double" />
+          <Property Name="valorpago" Type="double" Nullable="false" />
+          <Property Name="datacompra" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="usuariovenda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vendasproduto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="produto" Type="int" Nullable="false" />
+          <Property Name="qtd" Type="double" Nullable="false" />
+          <Property Name="valorcusto" Type="double" Nullable="false" />
+          <Property Name="valorvenda" Type="double" Nullable="false" />
+          <Property Name="desconto" Type="double" />
+          <Property Name="venda" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fkclientesmunicipio">
+          <End Role="municipios" Type="Self.municipios" Multiplicity="0..1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="municipios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkclientesusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkestoqueprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="estoque" Type="Self.estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmarcasusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="marcas" Type="Self.marcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="marcas">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmunicipiosestados">
+          <End Role="estados" Type="Self.estados" Multiplicity="1" />
+          <End Role="municipios" Type="Self.municipios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="municipios">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprecosprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="precos" Type="Self.precos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="precos">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprecosusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="precos" Type="Self.precos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="precos">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosmarcas">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosprodutoscategoria">
+          <End Role="produtoscategoria" Type="Self.produtoscategoria" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtoscategoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasclientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="vendas" Type="Self.vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendas">
+              <PropertyRef Name="cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasprodutoprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="vendasproduto" Type="Self.vendasproduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendasproduto">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasprodutovendas">
+          <End Role="vendas" Type="Self.vendas" Multiplicity="1" />
+          <End Role="vendasproduto" Type="Self.vendasproduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendasproduto">
+              <PropertyRef Name="venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="vendas" Type="Self.vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendas">
+              <PropertyRef Name="usuariovenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HarlemErpDataModelStoreContainer">
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="config" EntityType="Self.config" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="estados" EntityType="Self.estados" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="estoque" EntityType="Self.estoque" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="marcas" EntityType="Self.marcas" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="municipios" EntityType="Self.municipios" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="precos" EntityType="Self.precos" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="produtos" EntityType="Self.produtos" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="produtoscategoria" EntityType="Self.produtoscategoria" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="vendas" EntityType="Self.vendas" Schema="schemaerp" store:Type="Tables" />
+          <EntitySet Name="vendasproduto" EntityType="Self.vendasproduto" Schema="schemaerp" store:Type="Tables" />
+          <AssociationSet Name="fkclientesmunicipio" Association="Self.fkclientesmunicipio">
+            <End Role="municipios" EntitySet="municipios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkclientesusuarios" Association="Self.fkclientesusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkestoqueprodutos" Association="Self.fkestoqueprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="estoque" EntitySet="estoque" />
+          </AssociationSet>
+          <AssociationSet Name="fkmarcasusuarios" Association="Self.fkmarcasusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="marcas" EntitySet="marcas" />
+          </AssociationSet>
+          <AssociationSet Name="fkmunicipiosestados" Association="Self.fkmunicipiosestados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="municipios" EntitySet="municipios" />
+          </AssociationSet>
+          <AssociationSet Name="fkprecosprodutos" Association="Self.fkprecosprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="precos" EntitySet="precos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprecosusuarios" Association="Self.fkprecosusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="precos" EntitySet="precos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosmarcas" Association="Self.fkprodutosmarcas">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosprodutoscategoria" Association="Self.fkprodutosprodutoscategoria">
+            <End Role="produtoscategoria" EntitySet="produtoscategoria" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosusuarios" Association="Self.fkprodutosusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasclientes" Association="Self.fkvendasclientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="vendas" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasprodutoprodutos" Association="Self.fkvendasprodutoprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="vendasproduto" EntitySet="vendasproduto" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasprodutovendas" Association="Self.fkvendasprodutovendas">
+            <End Role="vendas" EntitySet="vendas" />
+            <End Role="vendasproduto" EntitySet="vendasproduto" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasusuarios" Association="Self.fkvendasusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="vendas" EntitySet="vendas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HarlemErpDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datanascimento" Type="DateTime" />
+          <Property Name="sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="logradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="Int32" />
+          <Property Name="bairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="municipio" Type="Int32" />
+          <Property Name="datacadastro" Type="DateTime" />
+          <Property Name="usuariocadastro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="municipios" Relationship="Self.fkclientesmunicipio" FromRole="clientes" ToRole="municipios" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkclientesusuarios" FromRole="clientes" ToRole="usuarios" />
+          <NavigationProperty Name="vendas" Relationship="Self.fkvendasclientes" FromRole="clientes" ToRole="vendas" />
+        </EntityType>
+        <EntityType Name="config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="licenca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="primeiroacessorealizado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="estados">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sigla" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="municipios" Relationship="Self.fkmunicipiosestados" FromRole="estados" ToRole="municipios" />
+        </EntityType>
+        <EntityType Name="estoque">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto" Type="Int32" Nullable="false" />
+          <Property Name="qtd" Type="Double" Nullable="false" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkestoqueprodutos" FromRole="estoque" ToRole="produtos" />
+        </EntityType>
+        <EntityType Name="marcas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datacadastro" Type="DateTime" />
+          <Property Name="usuariocadastro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkmarcasusuarios" FromRole="marcas" ToRole="usuarios" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkprodutosmarcas" FromRole="marcas" ToRole="produtos" />
+        </EntityType>
+        <EntityType Name="municipios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.fkclientesmunicipio" FromRole="municipios" ToRole="clientes" />
+          <NavigationProperty Name="estados" Relationship="Self.fkmunicipiosestados" FromRole="municipios" ToRole="estados" />
+        </EntityType>
+        <EntityType Name="precos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto" Type="Int32" Nullable="false" />
+          <Property Name="datainicial" Type="DateTime" Nullable="false" />
+          <Property Name="datafinal" Type="DateTime" />
+          <Property Name="valorcusto" Type="Double" Nullable="false" />
+          <Property Name="valorvenda" Type="Double" Nullable="false" />
+          <Property Name="datacadastro" Type="DateTime" />
+          <Property Name="usuariocadastro" Type="Int32" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkprecosprodutos" FromRole="precos" ToRole="produtos" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkprecosusuarios" FromRole="precos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
+          <Property Name="categoria" Type="Int32" Nullable="false" />
+          <Property Name="datacadastro" Type="DateTime" />
+          <Property Name="usuariocadastro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="estoque" Relationship="Self.fkestoqueprodutos" FromRole="produtos" ToRole="estoque" />
+          <NavigationProperty Name="marcas" Relationship="Self.fkprodutosmarcas" FromRole="produtos" ToRole="marcas" />
+          <NavigationProperty Name="precos" Relationship="Self.fkprecosprodutos" FromRole="produtos" ToRole="precos" />
+          <NavigationProperty Name="produtoscategoria" Relationship="Self.fkprodutosprodutoscategoria" FromRole="produtos" ToRole="produtoscategoria" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkprodutosusuarios" FromRole="produtos" ToRole="usuarios" />
+          <NavigationProperty Name="vendasproduto" Relationship="Self.fkvendasprodutoprodutos" FromRole="produtos" ToRole="vendasproduto" />
+        </EntityType>
+        <EntityType Name="produtoscategoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkprodutosprodutoscategoria" FromRole="produtoscategoria" ToRole="produtos" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.fkclientesusuarios" FromRole="usuarios" ToRole="clientes" />
+          <NavigationProperty Name="marcas" Relationship="Self.fkmarcasusuarios" FromRole="usuarios" ToRole="marcas" />
+          <NavigationProperty Name="precos" Relationship="Self.fkprecosusuarios" FromRole="usuarios" ToRole="precos" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkprodutosusuarios" FromRole="usuarios" ToRole="produtos" />
+          <NavigationProperty Name="vendas" Relationship="Self.fkvendasusuarios" FromRole="usuarios" ToRole="vendas" />
+        </EntityType>
+        <EntityType Name="vendas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cliente" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="Double" Nullable="false" />
+          <Property Name="desconto" Type="Double" />
+          <Property Name="valorpago" Type="Double" Nullable="false" />
+          <Property Name="datacompra" Type="DateTime" Nullable="false" />
+          <Property Name="usuariovenda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clientes" Relationship="Self.fkvendasclientes" FromRole="vendas" ToRole="clientes" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fkvendasusuarios" FromRole="vendas" ToRole="usuarios" />
+          <NavigationProperty Name="vendasproduto" Relationship="Self.fkvendasprodutovendas" FromRole="vendas" ToRole="vendasproduto" />
+        </EntityType>
+        <EntityType Name="vendasproduto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="produto" Type="Int32" Nullable="false" />
+          <Property Name="qtd" Type="Double" Nullable="false" />
+          <Property Name="valorcusto" Type="Double" Nullable="false" />
+          <Property Name="valorvenda" Type="Double" Nullable="false" />
+          <Property Name="desconto" Type="Double" />
+          <Property Name="venda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="produtos" Relationship="Self.fkvendasprodutoprodutos" FromRole="vendasproduto" ToRole="produtos" />
+          <NavigationProperty Name="vendas" Relationship="Self.fkvendasprodutovendas" FromRole="vendasproduto" ToRole="vendas" />
+        </EntityType>
+        <Association Name="fkclientesmunicipio">
+          <End Role="municipios" Type="Self.municipios" Multiplicity="0..1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="municipios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="municipio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkclientesusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasclientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="vendas" Type="Self.vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendas">
+              <PropertyRef Name="cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmunicipiosestados">
+          <End Role="estados" Type="Self.estados" Multiplicity="1" />
+          <End Role="municipios" Type="Self.municipios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="municipios">
+              <PropertyRef Name="estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkestoqueprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="estoque" Type="Self.estoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="estoque">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkmarcasusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="marcas" Type="Self.marcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="marcas">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosmarcas">
+          <End Role="marcas" Type="Self.marcas" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marcas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprecosprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="precos" Type="Self.precos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="precos">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprecosusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+          <End Role="precos" Type="Self.precos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="precos">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosprodutoscategoria">
+          <End Role="produtoscategoria" Type="Self.produtoscategoria" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtoscategoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkprodutosusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="produtos" Type="Self.produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produtos">
+              <PropertyRef Name="usuariocadastro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasprodutoprodutos">
+          <End Role="produtos" Type="Self.produtos" Multiplicity="1" />
+          <End Role="vendasproduto" Type="Self.vendasproduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendasproduto">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasusuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="vendas" Type="Self.vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendas">
+              <PropertyRef Name="usuariovenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkvendasprodutovendas">
+          <End Role="vendas" Type="Self.vendas" Multiplicity="1" />
+          <End Role="vendasproduto" Type="Self.vendasproduto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendasproduto">
+              <PropertyRef Name="venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataModelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clientes" EntityType="Self.clientes" />
+          <EntitySet Name="config" EntityType="Self.config" />
+          <EntitySet Name="estados" EntityType="Self.estados" />
+          <EntitySet Name="estoque" EntityType="Self.estoque" />
+          <EntitySet Name="marcas" EntityType="Self.marcas" />
+          <EntitySet Name="municipios" EntityType="Self.municipios" />
+          <EntitySet Name="precos" EntityType="Self.precos" />
+          <EntitySet Name="produtos" EntityType="Self.produtos" />
+          <EntitySet Name="produtoscategoria" EntityType="Self.produtoscategoria" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="vendas" EntityType="Self.vendas" />
+          <EntitySet Name="vendasproduto" EntityType="Self.vendasproduto" />
+          <AssociationSet Name="fkclientesmunicipio" Association="Self.fkclientesmunicipio">
+            <End Role="municipios" EntitySet="municipios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkclientesusuarios" Association="Self.fkclientesusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasclientes" Association="Self.fkvendasclientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="vendas" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="fkmunicipiosestados" Association="Self.fkmunicipiosestados">
+            <End Role="estados" EntitySet="estados" />
+            <End Role="municipios" EntitySet="municipios" />
+          </AssociationSet>
+          <AssociationSet Name="fkestoqueprodutos" Association="Self.fkestoqueprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="estoque" EntitySet="estoque" />
+          </AssociationSet>
+          <AssociationSet Name="fkmarcasusuarios" Association="Self.fkmarcasusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="marcas" EntitySet="marcas" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosmarcas" Association="Self.fkprodutosmarcas">
+            <End Role="marcas" EntitySet="marcas" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprecosprodutos" Association="Self.fkprecosprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="precos" EntitySet="precos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprecosusuarios" Association="Self.fkprecosusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="precos" EntitySet="precos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosprodutoscategoria" Association="Self.fkprodutosprodutoscategoria">
+            <End Role="produtoscategoria" EntitySet="produtoscategoria" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkprodutosusuarios" Association="Self.fkprodutosusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="produtos" EntitySet="produtos" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasprodutoprodutos" Association="Self.fkvendasprodutoprodutos">
+            <End Role="produtos" EntitySet="produtos" />
+            <End Role="vendasproduto" EntitySet="vendasproduto" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasusuarios" Association="Self.fkvendasusuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="vendas" EntitySet="vendas" />
+          </AssociationSet>
+          <AssociationSet Name="fkvendasprodutovendas" Association="Self.fkvendasprodutovendas">
+            <End Role="vendas" EntitySet="vendas" />
+            <End Role="vendasproduto" EntitySet="vendasproduto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HarlemErpDataModelStoreContainer" CdmEntityContainer="DataModelEntities">
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="datanascimento" ColumnName="datanascimento" />
+                <ScalarProperty Name="sexo" ColumnName="sexo" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="municipio" ColumnName="municipio" />
+                <ScalarProperty Name="datacadastro" ColumnName="datacadastro" />
+                <ScalarProperty Name="usuariocadastro" ColumnName="usuariocadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="config">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.config">
+              <MappingFragment StoreEntitySet="config">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="licenca" ColumnName="licenca" />
+                <ScalarProperty Name="primeiroacessorealizado" ColumnName="primeiroacessorealizado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estados">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.estados">
+              <MappingFragment StoreEntitySet="estados">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sigla" ColumnName="sigla" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="estoque">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.estoque">
+              <MappingFragment StoreEntitySet="estoque">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="qtd" ColumnName="qtd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="marcas">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.marcas">
+              <MappingFragment StoreEntitySet="marcas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="datacadastro" ColumnName="datacadastro" />
+                <ScalarProperty Name="usuariocadastro" ColumnName="usuariocadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="municipios">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.municipios">
+              <MappingFragment StoreEntitySet="municipios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="precos">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.precos">
+              <MappingFragment StoreEntitySet="precos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="datainicial" ColumnName="datainicial" />
+                <ScalarProperty Name="datafinal" ColumnName="datafinal" />
+                <ScalarProperty Name="valorcusto" ColumnName="valorcusto" />
+                <ScalarProperty Name="valorvenda" ColumnName="valorvenda" />
+                <ScalarProperty Name="datacadastro" ColumnName="datacadastro" />
+                <ScalarProperty Name="usuariocadastro" ColumnName="usuariocadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produtos">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.produtos">
+              <MappingFragment StoreEntitySet="produtos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="datacadastro" ColumnName="datacadastro" />
+                <ScalarProperty Name="usuariocadastro" ColumnName="usuariocadastro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produtoscategoria">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.produtoscategoria">
+              <MappingFragment StoreEntitySet="produtoscategoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendas">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.vendas">
+              <MappingFragment StoreEntitySet="vendas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="desconto" ColumnName="desconto" />
+                <ScalarProperty Name="valorpago" ColumnName="valorpago" />
+                <ScalarProperty Name="datacompra" ColumnName="datacompra" />
+                <ScalarProperty Name="usuariovenda" ColumnName="usuariovenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendasproduto">
+            <EntityTypeMapping TypeName="HarlemErpDataModel.vendasproduto">
+              <MappingFragment StoreEntitySet="vendasproduto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="qtd" ColumnName="qtd" />
+                <ScalarProperty Name="valorcusto" ColumnName="valorcusto" />
+                <ScalarProperty Name="valorvenda" ColumnName="valorvenda" />
+                <ScalarProperty Name="desconto" ColumnName="desconto" />
+                <ScalarProperty Name="venda" ColumnName="venda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
