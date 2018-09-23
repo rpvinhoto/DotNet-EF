@@ -47,7 +47,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\CarroTest.cs" />
     <Compile Include="Entidades\CenarioTest.cs" />
+    <Compile Include="Entidades\LocalTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

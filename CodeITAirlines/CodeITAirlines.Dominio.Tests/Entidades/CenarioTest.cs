@@ -33,15 +33,6 @@ namespace CodeITAirlines.Dominio.Tests.Entidades
         }
 
         [Test]
-        public void Andar_com_carro_vazio()
-        {
-            var carro = new Carro(2, Locais.Terminal);
-            var ex = Assert.Throws<Exception>(() => carro.Andar(Locais.Aviao));
-
-            Assert.AreEqual("Carro está vazio.", ex.Message);
-        }
-
-        [Test]
         public void Entrar_pessoa_com_carro_lotado()
         {
             _cenario.Iniciar();
