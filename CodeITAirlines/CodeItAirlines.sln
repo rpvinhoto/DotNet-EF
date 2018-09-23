@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeItAirlines.Dominio", "CodeItAirlines.Dominio\CodeItAirlines.Dominio.csproj", "{1E529CF3-DAAB-465F-B3F7-A2504ACBDE70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeITAirlines.Apresentacao", "CodeITAirlines.Apresentacao\CodeITAirlines.Apresentacao.csproj", "{51ECACDE-1263-4205-BDF1-6192103F7061}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E529CF3-DAAB-465F-B3F7-A2504ACBDE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E529CF3-DAAB-465F-B3F7-A2504ACBDE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E529CF3-DAAB-465F-B3F7-A2504ACBDE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E529CF3-DAAB-465F-B3F7-A2504ACBDE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51ECACDE-1263-4205-BDF1-6192103F7061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51ECACDE-1263-4205-BDF1-6192103F7061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51ECACDE-1263-4205-BDF1-6192103F7061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51ECACDE-1263-4205-BDF1-6192103F7061}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D164DE57-3392-4F42-AE37-CA0862B4A8A5}
+	EndGlobalSection
+EndGlobal
