@@ -133,25 +133,35 @@ namespace CodeItAirlines.Dominio.Entidades
 
         private void ValidarPoliticasDaEmpresa()
         {
-            _politica.ValidarPessoasAcompanhadas(_terminal.Pessoas);
+            if (ObterPersonagensNoTerminal().Any())
+            {
+                _politica.ValidarPessoasAcompanhadas(_terminal.Pessoas);
 
-            if (!_politica.Validada)
-                throw new Exception(_politica.PoliticaDesrespeitada);
+                if (!_politica.Validada)
+                    throw new Exception(_politica.PoliticaDesrespeitada);
+            }
 
-            _politica.ValidarPessoasAcompanhadas(_aviao.Pessoas);
+            if (ObterPersonagensNoAviao().Any())
+            {
+                _politica.ValidarPessoasAcompanhadas(_aviao.Pessoas);
 
-            if (!_politica.Validada)
-                throw new Exception(_politica.PoliticaDesrespeitada);
+                if (!_politica.Validada)
+                    throw new Exception(_politica.PoliticaDesrespeitada);
 
-            _politica.ValidarPessoasAcompanhadas(_carro.Pessoas);
+            }
 
-            if (!_politica.Validada)
-                throw new Exception(_politica.PoliticaDesrespeitada);
+            if (ObterPersonagensNoCarro().Any())
+            {
+                _politica.ValidarPessoasAcompanhadas(_carro.Pessoas);
 
-            _politica.ValidarPessoaAutorizadaParaDirigir(_carro.Pessoas);
+                if (!_politica.Validada)
+                    throw new Exception(_politica.PoliticaDesrespeitada);
 
-            if (!_politica.Validada)
-                throw new Exception(_politica.PoliticaDesrespeitada);
+                _politica.ValidarPessoaAutorizadaParaDirigir(_carro.Pessoas);
+
+                if (!_politica.Validada)
+                    throw new Exception(_politica.PoliticaDesrespeitada);
+            }
         }
     }
 }
