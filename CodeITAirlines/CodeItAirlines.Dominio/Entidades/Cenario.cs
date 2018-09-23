@@ -111,7 +111,7 @@ namespace CodeItAirlines.Dominio.Entidades
 
         private void TransportarDoTerminalParaAviao()
         {
-            _carro.Andar(Locais.Terminal, Locais.Aviao);
+            _carro.Andar(Locais.Aviao);
 
             while (_carro.Pessoas.Any())
             {
@@ -122,7 +122,7 @@ namespace CodeItAirlines.Dominio.Entidades
 
         private void TransportarDoAviaoParaTerminal()
         {
-            _carro.Andar(Locais.Aviao, Locais.Terminal);
+            _carro.Andar(Locais.Terminal);
 
             while (_carro.Pessoas.Any())
             {

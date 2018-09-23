@@ -21,12 +21,12 @@ namespace CodeItAirlines.Dominio.Entidades
             LocalidadeAtual = localidadeAtual;
         }
 
-        public void Andar(Locais localPartida, Locais localChegada)
+        public void Andar(Locais destino)
         {
             if (CarroEstaVazio())
                 throw new Exception(CarroVazio);
 
-            LocalidadeAtual = localChegada;
+            LocalidadeAtual = destino;
         }
 
         public override void Entrar(Pessoa pessoa)

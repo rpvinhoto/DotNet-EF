@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeItAirlines.Dominio", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeITAirlines.Apresentacao", "CodeITAirlines.Apresentacao\CodeITAirlines.Apresentacao.csproj", "{51ECACDE-1263-4205-BDF1-6192103F7061}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeITAirlines.Dominio.Tests", "CodeITAirlines.Dominio.Tests\CodeITAirlines.Dominio.Tests.csproj", "{ADF70CA4-CBDD-45B4-BE43-124C7929D5F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{51ECACDE-1263-4205-BDF1-6192103F7061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51ECACDE-1263-4205-BDF1-6192103F7061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51ECACDE-1263-4205-BDF1-6192103F7061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF70CA4-CBDD-45B4-BE43-124C7929D5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF70CA4-CBDD-45B4-BE43-124C7929D5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF70CA4-CBDD-45B4-BE43-124C7929D5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF70CA4-CBDD-45B4-BE43-124C7929D5F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
